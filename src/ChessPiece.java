@@ -15,11 +15,6 @@ public abstract class ChessPiece {
         this.check = check;
     }
 
-    // Проверяет, не находится ли фигура под шахом
-    public boolean isNotInCheck() {
-        return !check;
-    }
-
     public abstract boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn);
 
     public abstract String getSymbol();

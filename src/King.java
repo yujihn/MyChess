@@ -20,20 +20,20 @@ public class King extends ChessPiece {
         return "K";
     }
 
-    // Проверяет, находится ли король под шахом
-    public boolean isUnderAttack(ChessBoard board, int line, int column) {
+    // Проверяет, находится ли король в безопасности (не под шахом)
+    public boolean isSafe(ChessBoard board, int line, int column) {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 ChessPiece piece = board.board[i][j];
                 if (piece != null && !piece.getColor().equals(this.getColor())) {
                     if (piece.canMoveToPosition(board, i, j, line, column)) {
                         this.setCheck(true); // Король под шахом
-                        return true;
+                        return false; // Король не в безопасности
                     }
                 }
             }
         }
         this.setCheck(false); // Король не под шахом
-        return false;
+        return true; // Король в безопасности
     }
 }
