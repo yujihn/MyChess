@@ -27,11 +27,13 @@ public class King extends ChessPiece {
                 ChessPiece piece = board.board[i][j];
                 if (piece != null && !piece.getColor().equals(this.getColor())) {
                     if (piece.canMoveToPosition(board, i, j, line, column)) {
-                        return true; // Король под шахом
+                        this.setCheck(true); // Король под шахом
+                        return true;
                     }
                 }
             }
         }
-        return false; // Король не под шахом
+        this.setCheck(false); // Король не под шахом
+        return false;
     }
 }

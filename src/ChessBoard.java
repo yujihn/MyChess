@@ -26,7 +26,7 @@ public class ChessBoard {
     }
 
     public void printBoard() {  //print board in console
-        System.out.println("Ходят " + nowPlayer);
+        System.out.println("Turn " + nowPlayer);
         System.out.println();
         System.out.println("Игрок 2(Черные)");
         System.out.println();
@@ -59,8 +59,8 @@ public class ChessBoard {
         int line = nowPlayer.equals("Белые") ? 0 : 7; // Определяем линию для рокировки
         if (board[line][4] instanceof King king && board[line][0] instanceof Rook rook) {
 
-            // Проверяем, что король и ладья не двигались
-            if (!king.isInCheck() && !rook.isInCheck()) {
+            // Проверяем, что король не под шахом
+            if (!king.isUnderAttack(this, line, 4)) {
                 // Проверяем, что клетки между королём и ладьёй свободны
                 if (board[line][1] == null && board[line][2] == null && board[line][3] == null) {
                     // Перемещаем короля и ладью
@@ -80,8 +80,8 @@ public class ChessBoard {
         int line = nowPlayer.equals("Белые") ? 0 : 7; // Определяем линию для рокировки
         if (board[line][4] instanceof King king && board[line][7] instanceof Rook rook) {
 
-            // Проверяем, что король и ладья не двигались
-            if (!king.isInCheck() && !rook.isInCheck()) {
+            // Проверяем, что король не под шахом
+            if (!king.isUnderAttack(this, line, 4)) {
                 // Проверяем, что клетки между королём и ладьёй свободны
                 if (board[line][5] == null && board[line][6] == null) {
                     // Перемещаем короля и ладью
