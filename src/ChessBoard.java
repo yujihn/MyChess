@@ -16,8 +16,8 @@ public class ChessBoard {
             if (!nowPlayer.equals(board[startLine][startColumn].getColor())) return false;
 
             if (board[startLine][startColumn].canMoveToPosition(this, startLine, startColumn, endLine, endColumn)) {
-                board[endLine][endColumn] = board[startLine][startColumn];
-                board[startLine][startColumn] = null;
+                board[endLine][endColumn] = board[startLine][startColumn]; // if piece can move, we moved a piece
+                board[startLine][startColumn] = null; // set null to previous cell
                 this.nowPlayer = this.nowPlayerColor().equals("Белые") ? "Черные" : "Белые";
 
                 return true;
@@ -25,7 +25,7 @@ public class ChessBoard {
         } else return false;
     }
 
-    public void printBoard() {
+    public void printBoard() {  //print board in console
         System.out.println("Ходят " + nowPlayer);
         System.out.println();
         System.out.println("Игрок 2(Черные)");
@@ -53,14 +53,46 @@ public class ChessBoard {
     public boolean checkPos(int pos) {
         return pos >= 0 && pos <= 7;
     }
-    public  boolean castling0() {
-        return  false;
+
+    // Рокировка на стороне короля (короткая рокировка)
+    public boolean castling0() {
+        int line = nowPlayer.equals("Белые") ? 0 : 7; // Определяем линию для рокировки
+        if (board[line][4] instanceof King king && board[line][0] instanceof Rook rook) {
+
+            // Проверяем, что король и ладья не двигались
+            if (!king.isInCheck() && !rook.isInCheck()) {
+                // Проверяем, что клетки между королём и ладьёй свободны
+                if (board[line][1] == null && board[line][2] == null && board[line][3] == null) {
+                    // Перемещаем короля и ладью
+                    board[line][2] = king;
+                    board[line][3] = rook;
+                    board[line][4] = null;
+                    board[line][0] = null;
+                    return true;
+                }
+            }
+        }
+        return false;
     }
+
+    // Рокировка на стороне ферзя (длинная рокировка)
     public boolean castling7() {
+        int line = nowPlayer.equals("Белые") ? 0 : 7; // Определяем линию для рокировки
+        if (board[line][4] instanceof King king && board[line][7] instanceof Rook rook) {
+
+            // Проверяем, что король и ладья не двигались
+            if (!king.isInCheck() && !rook.isInCheck()) {
+                // Проверяем, что клетки между королём и ладьёй свободны
+                if (board[line][5] == null && board[line][6] == null) {
+                    // Перемещаем короля и ладью
+                    board[line][6] = king;
+                    board[line][5] = rook;
+                    board[line][4] = null;
+                    board[line][7] = null;
+                    return true;
+                }
+            }
+        }
         return false;
     }
 }
-
-
-
-

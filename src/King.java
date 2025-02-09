@@ -17,10 +17,21 @@ public class King extends ChessPiece {
 
     @Override
     public String getSymbol() {
-        return "К";
+        return "K";
     }
 
+    // Проверяет, находится ли король под шахом
     public boolean isUnderAttack(ChessBoard board, int line, int column) {
-        return false;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                ChessPiece piece = board.board[i][j];
+                if (piece != null && !piece.getColor().equals(this.getColor())) {
+                    if (piece.canMoveToPosition(board, i, j, line, column)) {
+                        return true; // Король под шахом
+                    }
+                }
+            }
+        }
+        return false; // Король не под шахом
     }
 }

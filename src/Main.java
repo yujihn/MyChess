@@ -47,10 +47,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("""
                 Команды:
-                Выход - 'exit' 
+                Выход - 'exit'
                 Перезапуск - 'replay'
-                Рокировка - 'castling0' или 'castling7' 
-                Передвижение фигуры - 'move 1 0 3 0'
+                Рокировка - 'castling0' или 'castling7'
+                Ход - 'move 1 0 3 0'
                 
                 Сначала вводятся исходные координаты по вертикале, потом через пробел по горизонтале
                 Далее необходимо аналогично ввести координаты назначения
@@ -65,14 +65,14 @@ public class Main {
         System.out.println();
         board.printBoard();
         while (true) {
-            // Выводим сообщение о текущем игроке
+            // Сообщение о текущем игроке
             if (board.nowPlayerColor().equals("Белые")) {
                 System.out.print("Ходят белые: ");
             } else {
                 System.out.print("Ходят черные: ");
             }
 
-            // Считываем ввод пользователя
+            // Ввод пользователя
             String s = scanner.nextLine();
             if (s.equals("exit")) break;
             else if (s.equals("replay")) {
