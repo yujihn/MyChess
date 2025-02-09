@@ -26,7 +26,7 @@ public class ChessBoard {
     }
 
     public void printBoard() {  //print board in console
-        System.out.println("Turn " + nowPlayer);
+        System.out.println("Ходят " + nowPlayer);
         System.out.println();
         System.out.println("Игрок 2(Черные)");
         System.out.println();
