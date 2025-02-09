@@ -1,5 +1,5 @@
 public class ChessBoard {
-    public ChessPiece[][] board = new ChessPiece[8][8]; // creating a field for game
+    public ChessPiece[][] board = new ChessPiece[8][8]; 
     String nowPlayer;
 
     public ChessBoard(String nowPlayer) {
@@ -16,8 +16,8 @@ public class ChessBoard {
             if (!nowPlayer.equals(board[startLine][startColumn].getColor())) return false;
 
             if (board[startLine][startColumn].canMoveToPosition(this, startLine, startColumn, endLine, endColumn)) {
-                board[endLine][endColumn] = board[startLine][startColumn]; // if piece can move, we moved a piece
-                board[startLine][startColumn] = null; // set null to previous cell
+                board[endLine][endColumn] = board[startLine][startColumn]; 
+                board[startLine][startColumn] = null; 
                 this.nowPlayer = this.nowPlayerColor().equals("Белые") ? "Черные" : "Белые";
 
                 return true;
@@ -25,7 +25,7 @@ public class ChessBoard {
         } else return false;
     }
 
-    public void printBoard() {  //print board in console
+    public void printBoard() { 
         System.out.println("Ходят " + nowPlayer);
         System.out.println();
         System.out.println("Игрок 2(Черные)");
