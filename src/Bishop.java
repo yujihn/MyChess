@@ -15,6 +15,6 @@ public class Bishop extends ChessPiece {
 
     @Override
     public String getSymbol() {
-        return "B";
+        return "С";
     }
 }

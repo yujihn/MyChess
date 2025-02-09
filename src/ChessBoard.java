@@ -16,19 +16,19 @@ public class ChessBoard {
             if (!nowPlayer.equals(board[startLine][startColumn].getColor())) return false;
 
             if (board[startLine][startColumn].canMoveToPosition(this, startLine, startColumn, endLine, endColumn)) {
-                board[endLine][endColumn] = board[startLine][startColumn]; // if piece can move, we moved a piece
-                board[startLine][startColumn] = null; // set null to previous cell
-                this.nowPlayer = this.nowPlayerColor().equals("White") ? "Black" : "White";
+                board[endLine][endColumn] = board[startLine][startColumn];
+                board[startLine][startColumn] = null;
+                this.nowPlayer = this.nowPlayerColor().equals("Белые") ? "Черные" : "Белые";
 
                 return true;
             } else return false;
         } else return false;
     }
 
-    public void printBoard() {  //print board in console
-        System.out.println("Turn " + nowPlayer);
+    public void printBoard() {
+        System.out.println("Ходят " + nowPlayer);
         System.out.println();
-        System.out.println("Player 2(Black)");
+        System.out.println("Игрок 2(Черные)");
         System.out.println();
         System.out.println("\t0\t1\t2\t3\t4\t5\t6\t7");
 
@@ -44,7 +44,10 @@ public class ChessBoard {
             System.out.println();
             System.out.println();
         }
-        System.out.println("Player 1(White)");
+        System.out.println("\t0\t1\t2\t3\t4\t5\t6\t7");
+        System.out.println();
+        System.out.println("Игрок 1(Белые)");
+        System.out.println();
     }
 
     public boolean checkPos(int pos) {

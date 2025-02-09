@@ -10,7 +10,7 @@ public class Pawn extends ChessPiece {
             return false;
         }
 
-        if (color.equals("White")) {
+        if (color.equals("Белые")) {
             if (line == 1) {
                 return (toLine == line + 2 && column == toColumn) || (toLine == line + 1 && column == toColumn);
             } else {
@@ -27,6 +27,6 @@ public class Pawn extends ChessPiece {
 
     @Override
     public String getSymbol() {
-        return "P";
+        return "П";
     }
 }

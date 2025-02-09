@@ -17,7 +17,7 @@ public class King extends ChessPiece {
 
     @Override
     public String getSymbol() {
-        return "K";
+        return "К";
     }
 
     public boolean isUnderAttack(ChessBoard board, int line, int column) {
